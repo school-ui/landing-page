@@ -1,0 +1,482 @@
+.figure {
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  background: #072a5b;
+  box-shadow: 24px 26px 0 rgba(255, 92, 33, 0.95);
+}
+
+.lightFigure {
+  border-color: var(--ink);
+  background: var(--paper-bright);
+  box-shadow: 24px 26px 0 var(--sky);
+}
+
+.figureTopline {
+  display: flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0 1rem;
+  color: var(--paper-bright);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.24);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.lightFigure .figureTopline {
+  color: var(--ink);
+  border-bottom-color: var(--line);
+}
+
+.scrollArea {
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+}
+
+.systemMap,
+.containerMap,
+.vaultMap {
+  display: block;
+  width: 100%;
+  min-width: 1040px;
+  height: auto;
+}
+
+.mapBackground {
+  fill: #082f65;
+}
+
+.gridLine {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.045);
+  stroke-width: 1;
+}
+
+.coordinate,
+.zoneLabelDark,
+.zoneLabelLight,
+.portStamp,
+.portStampLight,
+.noteTitle,
+.noteTitleLight,
+.keyIndex,
+.keyIndexLight,
+.containerIndex,
+.containerIndexDark,
+.containerPort,
+.containerPortDark,
+.formulaText,
+.formulaTextMuted,
+.formulaTextLight {
+  font-family: var(--font-mono), monospace;
+  letter-spacing: 0.08em;
+}
+
+.coordinate {
+  fill: #9dbce2;
+  font-size: 12px;
+}
+
+.paperZone {
+  fill: #f3efe6;
+  stroke: rgba(255, 255, 255, 0.28);
+}
+
+.webZone {
+  fill: #0a3670;
+  stroke: rgba(255, 255, 255, 0.3);
+}
+
+.sparkZone {
+  fill: #a9c7ee;
+  stroke: rgba(255, 255, 255, 0.3);
+}
+
+.zoneLabelDark {
+  fill: #15202d;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.zoneLabelLight {
+  fill: #d9e8fa;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.paperNode,
+.sparkNode,
+.keyInput,
+.saltInput,
+.dataNode {
+  fill: #fffdf8;
+  stroke: rgba(18, 24, 32, 0.38);
+}
+
+.primaryNode {
+  fill: #fffdf8;
+  stroke: #ff5c21;
+  stroke-width: 3;
+}
+
+.darkNode {
+  fill: #082650;
+  stroke: rgba(255, 255, 255, 0.26);
+}
+
+.darkNode + .nodeText .nodeTitle,
+.darkNode + .nodeText .nodeDetail,
+.sparkNodeStrong + .nodeText .nodeTitle,
+.sparkNodeStrong + .nodeText .nodeDetail {
+  fill: #fffdf8;
+}
+
+.orangeNote {
+  fill: #ff5c21;
+  stroke: #121820;
+}
+
+.webNote {
+  fill: #082650;
+  stroke: rgba(255, 255, 255, 0.22);
+}
+
+.sparkNote {
+  fill: #f3efe6;
+  stroke: #121820;
+}
+
+.bridge {
+  fill: #ff5c21;
+}
+
+.bridgeText {
+  fill: #121820;
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.11em;
+}
+
+.sparkNodeStrong {
+  fill: #0a3670;
+  stroke: #121820;
+}
+
+.sparkNode {
+  fill: #fffdf8;
+  stroke: #121820;
+}
+
+.nodeText {
+  font-family: var(--font-body), sans-serif;
+}
+
+.nodeTitle {
+  fill: #121820;
+  font-size: 18px;
+  font-weight: 720;
+  letter-spacing: -0.025em;
+}
+
+.nodeDetail {
+  fill: #5d625f;
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  letter-spacing: 0.03em;
+}
+
+.portStamp,
+.portStampLight {
+  fill: #0a3670;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.portStampLight {
+  fill: #9dbce2;
+}
+
+.noteTitle,
+.noteTitleLight {
+  fill: #121820;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.noteTitleLight {
+  fill: #ff8c62;
+}
+
+.noteBody,
+.noteBodyLight {
+  fill: #25303e;
+  font-family: var(--font-body), sans-serif;
+  font-size: 12px;
+}
+
+.noteBodyLight {
+  fill: #dbe8f8;
+}
+
+.flowLine,
+.internalLine,
+.controlLine,
+.vaultLine {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3;
+}
+
+.flowLine {
+  stroke: #ff5c21;
+}
+
+.internalLine {
+  stroke: #86acd9;
+}
+
+.controlLine {
+  stroke: #a9c7ee;
+  stroke-dasharray: 8 7;
+}
+
+.arrowHead {
+  fill: #ff5c21;
+}
+
+.caption,
+.captionDark {
+  padding: 1rem;
+  color: rgba(255, 255, 255, 0.68);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.03em;
+  line-height: 1.6;
+}
+
+.captionDark {
+  color: var(--muted);
+  border-top-color: var(--line);
+}
+
+.vaultBackground {
+  fill: #f3efe6;
+}
+
+.vaultArrowHead {
+  fill: #0a3670;
+}
+
+.vaultLine {
+  stroke: #0a3670;
+}
+
+.keyInput,
+.saltInput,
+.dataNode {
+  stroke-width: 2;
+}
+
+.saltInput {
+  fill: #a9c7ee;
+}
+
+.kdfNode {
+  fill: #ff5c21;
+  stroke: #121820;
+}
+
+.kekNode {
+  fill: #0a3670;
+  stroke: #121820;
+}
+
+.dekNode {
+  fill: #121820;
+  stroke: #ff5c21;
+  stroke-width: 3;
+}
+
+.separateHash {
+  fill: #fffdf8;
+  stroke: rgba(18, 24, 32, 0.32);
+  stroke-dasharray: 8 7;
+}
+
+.keyIndex,
+.keyIndexLight {
+  fill: #0a3670;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.keyIndexLight {
+  fill: #fffdf8;
+}
+
+.cryptoTitle,
+.hashTitle,
+.dataTitle {
+  fill: #fffdf8;
+  font-family: var(--font-display), serif;
+  font-size: 34px;
+  font-weight: 460;
+  letter-spacing: -0.045em;
+}
+
+.cryptoDetail,
+.hashDetail {
+  fill: rgba(255, 255, 255, 0.72);
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+}
+
+.hashTitle,
+.dataTitle {
+  fill: #121820;
+  font-size: 27px;
+}
+
+.hashDetail {
+  fill: #5d625f;
+}
+
+.formulaText,
+.formulaTextMuted,
+.formulaTextLight {
+  fill: #0a3670;
+  font-size: 13px;
+}
+
+.formulaTextMuted {
+  fill: #5d625f;
+}
+
+.formulaTextLight {
+  fill: #a9c7ee;
+}
+
+.composeBoundary {
+  fill: rgba(7, 42, 91, 0.82);
+  stroke: rgba(255, 255, 255, 0.45);
+  stroke-dasharray: 12 9;
+  stroke-width: 2;
+}
+
+.containerPrimary {
+  fill: #ff5c21;
+  stroke: #fffdf8;
+}
+
+.containerNode,
+.containerUtility,
+.hostCoordinator {
+  fill: #fffdf8;
+  stroke: rgba(18, 24, 32, 0.45);
+}
+
+.containerOptional {
+  fill: #a9c7ee;
+  stroke: #121820;
+  stroke-dasharray: 8 6;
+}
+
+.containerUtility {
+  fill: #a9c7ee;
+}
+
+.supervisorZone {
+  fill: #121820;
+  stroke: #ff5c21;
+  stroke-width: 3;
+}
+
+.hostCoordinator {
+  fill: #ff5c21;
+}
+
+.containerIndex,
+.containerIndexDark {
+  fill: #fffdf8;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.containerIndexDark {
+  fill: #0a3670;
+}
+
+.containerTitle,
+.containerTitleDark,
+.containerTitleSmall,
+.supervisorTitle {
+  fill: #fffdf8;
+  font-family: var(--font-display), serif;
+  font-size: 38px;
+  font-weight: 440;
+  letter-spacing: -0.045em;
+}
+
+.containerTitleDark,
+.containerTitleSmall {
+  fill: #121820;
+}
+
+.containerTitleSmall {
+  font-size: 30px;
+}
+
+.supervisorTitle {
+  font-size: 44px;
+}
+
+.containerDetail,
+.containerDetailDark {
+  fill: rgba(255, 255, 255, 0.78);
+  font-family: var(--font-mono), monospace;
+  font-size: 12px;
+}
+
+.containerDetailDark {
+  fill: #5d625f;
+}
+
+.containerPort,
+.containerPortDark {
+  fill: #fffdf8;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.containerPortDark {
+  fill: #0a3670;
+}
+
+@media (max-width: 760px) {
+  .figure {
+    box-shadow: 12px 14px 0 rgba(255, 92, 33, 0.95);
+  }
+
+  .lightFigure {
+    box-shadow: 12px 14px 0 var(--sky);
+  }
+
+  .figureTopline {
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    padding-block: 0.8rem;
+  }
+
+  .systemMap,
+  .containerMap,
+  .vaultMap {
+    min-width: 900px;
+  }
+}

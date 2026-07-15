@@ -1,0 +1,111 @@
+.heroMosaic {
+  position: relative;
+  min-height: 430px;
+  margin-bottom: 2rem;
+}
+
+.mosaicMain,
+.mosaicLeft,
+.mosaicRight {
+  position: absolute;
+  overflow: hidden;
+  border: 1px solid var(--ink);
+  background: white;
+  box-shadow: 12px 14px 0 rgba(10, 54, 112, 0.2);
+}
+
+.mosaicMain {
+  inset: 5% 5% 13% 8%;
+  transform: rotate(-1.5deg);
+}
+
+.mosaicLeft {
+  z-index: 2;
+  bottom: 0;
+  left: 0;
+  width: 48%;
+  height: 42%;
+  transform: rotate(3deg);
+}
+
+.mosaicRight {
+  z-index: 3;
+  top: 0;
+  right: 0;
+  width: 43%;
+  height: 38%;
+  transform: rotate(2deg);
+}
+
+.heroMosaic img {
+  object-fit: cover;
+  object-position: top;
+}
+
+.pilotBand {
+  display: grid;
+  grid-template-columns: 0.35fr 1.65fr;
+  gap: clamp(2rem, 7vw, 8rem);
+  max-width: 96rem;
+  margin: 0 auto;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.pilotBand span {
+  color: var(--sky);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.pilotBand p {
+  max-width: 56rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.7;
+}
+
+.sourceNote {
+  display: grid;
+  grid-template-columns: 0.5fr 1.5fr;
+  gap: clamp(2rem, 8vw, 9rem);
+  max-width: 96rem;
+  margin-inline: auto;
+}
+
+.sourceNote strong {
+  color: var(--cobalt);
+  font-family: var(--font-display), serif;
+  font-size: clamp(4rem, 8vw, 8rem);
+  font-weight: 430;
+  letter-spacing: -0.07em;
+  line-height: 0.85;
+}
+
+.sourceNote h2 {
+  font-family: var(--font-display), serif;
+  font-size: clamp(3.2rem, 6vw, 6.6rem);
+  font-weight: 400;
+  letter-spacing: -0.06em;
+  line-height: 0.92;
+}
+
+.sourceNote p {
+  max-width: 50rem;
+  margin-top: 2rem;
+  line-height: 1.75;
+}
+
+@media (max-width: 820px) {
+  .pilotBand,
+  .sourceNote {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .heroMosaic {
+    min-height: 340px;
+  }
+}
