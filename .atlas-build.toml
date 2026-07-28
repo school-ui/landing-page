@@ -1,0 +1,14 @@
+# Remote build + dev on atlas — see the `atlas` CLI (github.com/luka-loehr/atlas).
+#   atlas build   # npm run build on atlas, .next synced back
+#   atlas dev     # npm run dev on atlas + tunnel URL (Mac stays cold)
+#
+# node_modules and the npm cache live on atlas, so repeat runs are warm.
+name = landing-page
+image = node
+# next dev writes .next/dev/types and next build never refreshes it, so a route
+# change after a dev run leaves tsc checking deleted pages. Drop just that dir —
+# .next/cache stays warm.
+build = rm -rf .next/dev/types && npm ci && npm run build
+dev = npm run dev
+port = 3000
+artifacts = .next
