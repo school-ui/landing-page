@@ -4,7 +4,7 @@
 #
 # node_modules and the npm cache live on atlas, so repeat runs are warm.
 name = landing-page
-image = node
+image = universal
 # next dev writes .next/dev/types and next build never refreshes it, so a route
 # change after a dev run leaves tsc checking deleted pages. Drop just that dir —
 # .next/cache stays warm.
