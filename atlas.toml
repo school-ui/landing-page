@@ -1,3 +1,4 @@
+# migrated from .atlas-build.toml by 'atlas migrate'
 # Remote build + dev on atlas — see the `atlas` CLI (github.com/luka-loehr/atlas).
 #   atlas build   # npm run build on atlas, .next synced back
 #   atlas dev     # npm run dev on atlas + tunnel URL (Mac stays cold)
