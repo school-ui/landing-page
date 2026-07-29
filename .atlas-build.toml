@@ -8,7 +8,7 @@ image = universal
 # next dev writes .next/dev/types and next build never refreshes it, so a route
 # change after a dev run leaves tsc checking deleted pages. Drop just that dir —
 # .next/cache stays warm.
-build = rm -rf .next/dev/types && npm ci && npm run build
+build = rm -rf .next/dev/types && atlas-install && npm run build
 dev = npm run dev
 port = 3000
 artifacts = .next
