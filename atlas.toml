@@ -1,8 +1,8 @@
-# migrated from .atlas-build.toml by 'atlas migrate'
 # Remote build + dev on atlas — see the `atlas` CLI (github.com/luka-loehr/atlas).
 #   atlas build   # npm run build on atlas, .next synced back
 #   atlas dev     # npm run dev on atlas + tunnel URL (Mac stays cold)
 #
+# Next.js App Router marketing/landing site, no test script in package.json.
 # node_modules and the npm cache live on atlas, so repeat runs are warm.
 name = landing-page
 image = universal
@@ -12,4 +12,5 @@ image = universal
 build = rm -rf .next/dev/types && atlas-install && npm run build
 dev = npm run dev
 port = 3000
+health = /
 artifacts = .next
