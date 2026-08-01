@@ -64,8 +64,11 @@ img {
   *,
   *::before,
   *::after {
+    /* biome-ignore lint/complexity/noImportantStyles: a11y override must win over any component specificity */
     animation-duration: 0.01ms !important;
+    /* biome-ignore lint/complexity/noImportantStyles: a11y override must win over any component specificity */
     animation-iteration-count: 1 !important;
+    /* biome-ignore lint/complexity/noImportantStyles: a11y override must win over any component specificity */
     scroll-behavior: auto !important;
   }
 }

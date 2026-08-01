@@ -65,6 +65,7 @@
         "noChildrenProp": "error",
         "noNestedComponentDefinitions": "error",
         "noNextAsyncClientComponent": "warn",
+        "noReactPropAssignments": "error",
         "noRenderReturnValue": "error",
         "noUnusedVariables": "warn",
         "useExhaustiveDependencies": "warn",
@@ -143,10 +144,9 @@
       }
     }
   },
-  "overrides": [
-    {
-      "includes": ["**/*.css"],
-      "linter": { "enabled": false }
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
     }
-  ]
+  }
 }

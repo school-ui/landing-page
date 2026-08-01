@@ -494,11 +494,11 @@
   }
 
   .accentorange {
-    box-shadow-color: var(--orange);
+    box-shadow: 10px 12px 0 var(--orange);
   }
 
   .accentsky {
-    box-shadow-color: var(--sky);
+    box-shadow: 10px 12px 0 var(--sky);
   }
 
   .evidenceNote {
