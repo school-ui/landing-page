@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import atlas from "@/components/atlas-sections.module.css";
 import {
   DeepPageHero,
   NextChapter,
   SectionHeader,
 } from "@/components/deep-page";
 import { SiteFooter, SiteHeader } from "@/components/site-shell";
-import atlas from "@/components/atlas-sections.module.css";
 import { manualCoverage, productPages } from "@/data/product-pages";
 import styles from "./product.module.css";
 
@@ -45,13 +45,29 @@ export default function ProductPage() {
         >
           <div className={styles.heroMosaic} aria-hidden="true">
             <div className={styles.mosaicMain}>
-              <Image src="/images/showcase/chat-start.webp" alt="" fill sizes="38vw" priority />
+              <Image
+                src="/images/showcase/chat-start.webp"
+                alt=""
+                fill
+                sizes="38vw"
+                priority
+              />
             </div>
             <div className={styles.mosaicLeft}>
-              <Image src="/images/showcase/visualization-plot.webp" alt="" fill sizes="20vw" />
+              <Image
+                src="/images/showcase/visualization-plot.webp"
+                alt=""
+                fill
+                sizes="20vw"
+              />
             </div>
             <div className={styles.mosaicRight}>
-              <Image src="/images/showcase/teacher-project-builder.webp" alt="" fill sizes="18vw" />
+              <Image
+                src="/images/showcase/teacher-project-builder.webp"
+                alt=""
+                fill
+                sizes="18vw"
+              />
             </div>
           </div>
         </DeepPageHero>
@@ -77,7 +93,9 @@ export default function ProductPage() {
                 href={`/product/${page.slug}`}
                 key={page.slug}
               >
-                <span>{page.number} / {page.eyebrow}</span>
+                <span>
+                  {page.number} / {page.eyebrow}
+                </span>
                 <b aria-hidden="true">↗</b>
                 <h3>{page.titleEmphasis}</h3>
                 <p>{page.lead}</p>
@@ -112,7 +130,9 @@ export default function ProductPage() {
               <article className={atlas.featureGroup} key={group.title}>
                 <h3>{group.title}</h3>
                 <ul>
-                  {group.items.map((item) => <li key={item}>{item}</li>)}
+                  {group.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
                 </ul>
               </article>
             ))}

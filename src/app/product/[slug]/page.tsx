@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import atlas from "@/components/atlas-sections.module.css";
 import {
   DeepPageHero,
   NextChapter,
   ScreenshotStage,
 } from "@/components/deep-page";
 import { SiteFooter, SiteHeader } from "@/components/site-shell";
-import atlas from "@/components/atlas-sections.module.css";
 import { getProductPage, productPages } from "@/data/product-pages";
 
 type PageProps = {
@@ -17,7 +17,9 @@ export function generateStaticParams() {
   return productPages.map((page) => ({ slug: page.slug }));
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const page = getProductPage(slug);
 
@@ -47,7 +49,9 @@ export default async function ProductDetailPage({ params }: PageProps) {
     notFound();
   }
 
-  const currentIndex = productPages.findIndex((item) => item.slug === page.slug);
+  const currentIndex = productPages.findIndex(
+    (item) => item.slug === page.slug,
+  );
   const nextPage = productPages[currentIndex + 1];
 
   return (
@@ -105,8 +109,13 @@ export default async function ProductDetailPage({ params }: PageProps) {
           );
 
           return (
-            <section className={sectionClasses[index % sectionClasses.length]} key={chapter.index}>
-              <div className={`${atlas.split} ${index % 2 ? atlas.splitReverse : ""}`}>
+            <section
+              className={sectionClasses[index % sectionClasses.length]}
+              key={chapter.index}
+            >
+              <div
+                className={`${atlas.split} ${index % 2 ? atlas.splitReverse : ""}`}
+              >
                 {index % 2 ? screenshot : copy}
                 {index % 2 ? copy : screenshot}
               </div>
@@ -129,7 +138,9 @@ export default async function ProductDetailPage({ params }: PageProps) {
           href={nextPage ? `/product/${nextPage.slug}` : "/architecture"}
           index={nextPage?.number ?? "A / 01"}
           label={nextPage ? "Next product chapter" : "Next systems chapter"}
-          title={nextPage?.titleEmphasis ?? "One question. Four trust boundaries."}
+          title={
+            nextPage?.titleEmphasis ?? "One question. Four trust boundaries."
+          }
           text={
             nextPage?.lead ??
             "Trace the product through the PHP application, encrypted data layer, restricted internal link and local DGX Spark."

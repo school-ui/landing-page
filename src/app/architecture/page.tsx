@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import atlas from "@/components/atlas-sections.module.css";
 import {
   DeepPageHero,
   EvidenceNote,
@@ -7,7 +8,6 @@ import {
 } from "@/components/deep-page";
 import { SiteFooter, SiteHeader } from "@/components/site-shell";
 import { SystemArchitectureDiagram } from "@/components/technical-diagrams";
-import atlas from "@/components/atlas-sections.module.css";
 
 export const metadata: Metadata = {
   title: "Architecture",
@@ -17,23 +17,75 @@ export const metadata: Metadata = {
 };
 
 const chatFlow = [
-  ["01", "Request", "The browser submits a message to the same-origin PHP application."],
-  ["02", "Authorise", "Session, role, project boundary and Vault availability are checked."],
-  ["03", "Queue", "The job payload and private artifacts are encrypted before durable storage."],
-  ["04", "Assemble", "Prompts, project rules, recent context and selected retrieval are composed."],
-  ["05", "Infer", "Approved plaintext is sent server-to-server to the local SGLang model."],
-  ["06", "Stream", "Response chunks use an encrypted DB buffer and a non-persistent speed layer."],
-  ["07", "Render", "SSE returns the answer; the browser renders constrained, inspectable outputs."],
+  [
+    "01",
+    "Request",
+    "The browser submits a message to the same-origin PHP application.",
+  ],
+  [
+    "02",
+    "Authorise",
+    "Session, role, project boundary and Vault availability are checked.",
+  ],
+  [
+    "03",
+    "Queue",
+    "The job payload and private artifacts are encrypted before durable storage.",
+  ],
+  [
+    "04",
+    "Assemble",
+    "Prompts, project rules, recent context and selected retrieval are composed.",
+  ],
+  [
+    "05",
+    "Infer",
+    "Approved plaintext is sent server-to-server to the local SGLang model.",
+  ],
+  [
+    "06",
+    "Stream",
+    "Response chunks use an encrypted DB buffer and a non-persistent speed layer.",
+  ],
+  [
+    "07",
+    "Render",
+    "SSE returns the answer; the browser renders constrained, inspectable outputs.",
+  ],
 ] as const;
 
 const ragFlow = [
-  ["01", "Validate", "A file must pass size, type, magic-byte and container checks."],
-  ["02", "Encrypt", "The original is written outside the web root as an EFR1 encrypted stream."],
-  ["03", "Extract", "Local format-specific readers normalize text without online converters."],
+  [
+    "01",
+    "Validate",
+    "A file must pass size, type, magic-byte and container checks.",
+  ],
+  [
+    "02",
+    "Encrypt",
+    "The original is written outside the web root as an EFR1 encrypted stream.",
+  ],
+  [
+    "03",
+    "Extract",
+    "Local format-specific readers normalize text without online converters.",
+  ],
   ["04", "Chunk", "Text is divided into bounded overlapping passages."],
-  ["05", "Embed", "Plaintext chunks visit the local embedding service for the active request."],
-  ["06", "Protect", "Both chunk text and vectors return to encrypted MySQL storage."],
-  ["07", "Retrieve", "PHP compares vectors and decrypts only selected passages into context."],
+  [
+    "05",
+    "Embed",
+    "Plaintext chunks visit the local embedding service for the active request.",
+  ],
+  [
+    "06",
+    "Protect",
+    "Both chunk text and vectors return to encrypted MySQL storage.",
+  ],
+  [
+    "07",
+    "Retrieve",
+    "PHP compares vectors and decrypts only selected passages into context.",
+  ],
 ] as const;
 
 const residency = [
@@ -135,9 +187,9 @@ export default function ArchitecturePage() {
               the encrypted data layer.
             </h2>
             <p>
-              The local model is deliberately downstream of identity,
-              permission and context decisions. It receives a bounded request;
-              it does not become the authority for the school&apos;s data.
+              The local model is deliberately downstream of identity, permission
+              and context decisions. It receives a bounded request; it does not
+              become the authority for the school&apos;s data.
             </p>
           </div>
         </section>
@@ -178,7 +230,9 @@ export default function ArchitecturePage() {
                   <h3>{title}</h3>
                   <p>{text}</p>
                 </div>
-                {index < chatFlow.length - 1 ? <b aria-hidden="true">→</b> : null}
+                {index < chatFlow.length - 1 ? (
+                  <b aria-hidden="true">→</b>
+                ) : null}
               </article>
             ))}
           </div>
@@ -186,7 +240,8 @@ export default function ArchitecturePage() {
             <span>Conceptual context assembly</span>
             <div>
               <code>
-                request = system + role + project + conversation + topK(retrieval)
+                request = system + role + project + conversation +
+                topK(retrieval)
               </code>
               <p>
                 The exact prompt is assembled server-side from authorised
@@ -218,7 +273,9 @@ export default function ArchitecturePage() {
                   <h3>{title}</h3>
                   <p>{text}</p>
                 </div>
-                {index < ragFlow.length - 1 ? <b aria-hidden="true">→</b> : null}
+                {index < ragFlow.length - 1 ? (
+                  <b aria-hidden="true">→</b>
+                ) : null}
               </article>
             ))}
           </div>
@@ -229,8 +286,9 @@ export default function ArchitecturePage() {
               <p>
                 PHP calculates cosine similarity over locally generated vectors,
                 selects the highest-scoring bounded passages, and decrypts only
-                those passages into the prompt. Typical ingest uses approximately
-                320-token chunks with a 60-token overlap and a 200-chunk cap.
+                those passages into the prompt. Typical ingest uses
+                approximately 320-token chunks with a 60-token overlap and a
+                200-chunk cap.
               </p>
             </div>
           </div>

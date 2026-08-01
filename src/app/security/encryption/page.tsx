@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import atlas from "@/components/atlas-sections.module.css";
 import {
   DeepPageHero,
   EvidenceNote,
@@ -7,7 +8,6 @@ import {
 } from "@/components/deep-page";
 import { SiteFooter, SiteHeader } from "@/components/site-shell";
 import { VaultKeyDiagram } from "@/components/technical-diagrams";
-import atlas from "@/components/atlas-sections.module.css";
 
 export const metadata: Metadata = {
   title: "Encryption deep dive",
@@ -50,29 +50,97 @@ const keyDomains = [
 ] as const;
 
 const lifecycle = [
-  ["01", "Create", "Generate a random User-DEK; derive a KEK from password + per-account salt; store only the wrapped DEK."],
-  ["02", "Unlock", "Verify the login password, derive the KEK again, unwrap the same User-DEK, then establish the bounded session."],
-  ["03", "Change", "With the Vault already open, derive a new KEK and rewrap the unchanged User-DEK. Private ciphertext remains untouched."],
-  ["04", "Recover", "If the optional buddy system was prepared, a live approved case can recover and rewrap the same DEK without revealing chats to the buddy."],
-  ["05", "Reset", "Without old password or prepared recovery, a destructive reset creates a new Vault and removes private data tied to the unreachable old DEK."],
+  [
+    "01",
+    "Create",
+    "Generate a random User-DEK; derive a KEK from password + per-account salt; store only the wrapped DEK.",
+  ],
+  [
+    "02",
+    "Unlock",
+    "Verify the login password, derive the KEK again, unwrap the same User-DEK, then establish the bounded session.",
+  ],
+  [
+    "03",
+    "Change",
+    "With the Vault already open, derive a new KEK and rewrap the unchanged User-DEK. Private ciphertext remains untouched.",
+  ],
+  [
+    "04",
+    "Recover",
+    "If the optional buddy system was prepared, a live approved case can recover and rewrap the same DEK without revealing chats to the buddy.",
+  ],
+  [
+    "05",
+    "Reset",
+    "Without old password or prepared recovery, a destructive reset creates a new Vault and removes private data tied to the unreachable old DEK.",
+  ],
 ] as const;
 
 const recoverySteps = [
-  ["01 / prepare", "Invite", "The owner invites an eligible school account. The response does not confirm whether an entered address exists."],
-  ["02 / consent", "Accept", "The buddy accepts while their own Vault is unlocked; that creates a recipient key, not access to the owner’s data."],
-  ["03 / activate", "Wrap", "The owner activates the relationship. A random recovery secret wraps the Owner-DEK and is sealed to active buddy public keys."],
-  ["04 / verify", "Compare", "In a live case, owner and buddy compare a nine-word SAS and verify identity outside the app before approval."],
-  ["05 / wait", "Cooling-off", "A successful approval still waits through a server-enforced cooling-off period. The owner receives a single-use veto path."],
-  ["06 / finish", "Rewrap", "The same Owner-DEK is wrapped with the new password. Sessions and the old recovery setup are revoked and must be prepared again."],
+  [
+    "01 / prepare",
+    "Invite",
+    "The owner invites an eligible school account. The response does not confirm whether an entered address exists.",
+  ],
+  [
+    "02 / consent",
+    "Accept",
+    "The buddy accepts while their own Vault is unlocked; that creates a recipient key, not access to the owner’s data.",
+  ],
+  [
+    "03 / activate",
+    "Wrap",
+    "The owner activates the relationship. A random recovery secret wraps the Owner-DEK and is sealed to active buddy public keys.",
+  ],
+  [
+    "04 / verify",
+    "Compare",
+    "In a live case, owner and buddy compare a nine-word SAS and verify identity outside the app before approval.",
+  ],
+  [
+    "05 / wait",
+    "Cooling-off",
+    "A successful approval still waits through a server-enforced cooling-off period. The owner receives a single-use veto path.",
+  ],
+  [
+    "06 / finish",
+    "Rewrap",
+    "The same Owner-DEK is wrapped with the new password. Sessions and the old recovery setup are revoked and must be prepared again.",
+  ],
 ] as const;
 
 const limits = [
-  ["01 / storage theft", "What at-rest encryption helps", "A database or file-store copy does not directly contain readable private chats, file contents, private chunks, vectors or the User-DEK."],
-  ["02 / weak password", "What the KDF slows", "Argon2id makes each offline password guess memory- and compute-intensive; it does not make a weak password impossible to guess."],
-  ["03 / privileged runtime", "What it cannot hide", "Authorised server code must handle plaintext during a valid request. Malicious root-level or deployed application code is outside the promise of storage encryption."],
-  ["04 / browser compromise", "Why CSP still matters", "A compromised same-origin browser context could see content already displayed to the user, so output sandboxing and script policy remain essential."],
-  ["05 / deliberate export", "Where control changes", "PDF, HTML, clipboard and archive exports are user-authorised cleartext copies; their later protection belongs to the chosen destination."],
-  ["06 / operations", "Keys need a lifecycle", "Backups, rotation, loss, recovery testing and access to deployment secrets remain operational responsibilities—not properties of a cipher alone."],
+  [
+    "01 / storage theft",
+    "What at-rest encryption helps",
+    "A database or file-store copy does not directly contain readable private chats, file contents, private chunks, vectors or the User-DEK.",
+  ],
+  [
+    "02 / weak password",
+    "What the KDF slows",
+    "Argon2id makes each offline password guess memory- and compute-intensive; it does not make a weak password impossible to guess.",
+  ],
+  [
+    "03 / privileged runtime",
+    "What it cannot hide",
+    "Authorised server code must handle plaintext during a valid request. Malicious root-level or deployed application code is outside the promise of storage encryption.",
+  ],
+  [
+    "04 / browser compromise",
+    "Why CSP still matters",
+    "A compromised same-origin browser context could see content already displayed to the user, so output sandboxing and script policy remain essential.",
+  ],
+  [
+    "05 / deliberate export",
+    "Where control changes",
+    "PDF, HTML, clipboard and archive exports are user-authorised cleartext copies; their later protection belongs to the chosen destination.",
+  ],
+  [
+    "06 / operations",
+    "Keys need a lifecycle",
+    "Backups, rotation, loss, recovery testing and access to deployment secrets remain operational responsibilities—not properties of a cipher alone.",
+  ],
 ] as const;
 
 export default function EncryptionPage() {
@@ -175,7 +243,9 @@ export default function EncryptionPage() {
           <div className={atlas.formulaBand}>
             <span>Streaming files</span>
             <div>
-              <code>EFR1 ‖ header₂₄ ‖ Σ(lenᵢ ‖ secretstream(chunkᵢ, tagᵢ))</code>
+              <code>
+                EFR1 ‖ header₂₄ ‖ Σ(lenᵢ ‖ secretstream(chunkᵢ, tagᵢ))
+              </code>
               <p>
                 The final chunk carries an authenticated FINAL tag. A truncated
                 file is rejected, and decryption can stream straight to the
@@ -206,7 +276,9 @@ export default function EncryptionPage() {
                   <h3>{title}</h3>
                   <p>{text}</p>
                 </div>
-                {index < lifecycle.length - 1 ? <b aria-hidden="true">→</b> : null}
+                {index < lifecycle.length - 1 ? (
+                  <b aria-hidden="true">→</b>
+                ) : null}
               </article>
             ))}
           </div>
@@ -250,8 +322,7 @@ export default function EncryptionPage() {
             title={
               <>
                 A cipher protects bytes.
-                <br />
-                A system protects <em>people.</em>
+                <br />A system protects <em>people.</em>
               </>
             }
             lead="At-rest encryption is one control in a wider design that still depends on passwords, sessions, code integrity, operations and conscious user choices."

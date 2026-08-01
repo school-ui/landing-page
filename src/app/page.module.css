@@ -143,7 +143,12 @@ a:hover .arrow {
   min-height: 100vh;
   padding-top: 88px;
   background:
-    linear-gradient(90deg, transparent calc(42% - 1px), var(--line) 42%, transparent calc(42% + 1px)),
+    linear-gradient(
+      90deg,
+      transparent calc(42% - 1px),
+      var(--line) 42%,
+      transparent calc(42% + 1px)
+    ),
     var(--paper);
 }
 
@@ -158,7 +163,8 @@ a:hover .arrow {
   flex-direction: column;
   justify-content: space-between;
   min-width: 0;
-  padding: clamp(2rem, 5vw, 5.5rem) clamp(1.25rem, 4vw, 4.75rem) clamp(2.25rem, 5vw, 4.5rem);
+  padding: clamp(2rem, 5vw, 5.5rem) clamp(1.25rem, 4vw, 4.75rem)
+    clamp(2.25rem, 5vw, 4.5rem);
 }
 
 .eyebrow,
@@ -444,8 +450,7 @@ a:hover .arrow {
   padding: clamp(6rem, 10vw, 10rem) clamp(1.25rem, 5vw, 6rem);
   background:
     linear-gradient(var(--line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--line) 1px, transparent 1px),
-    var(--paper);
+    linear-gradient(90deg, var(--line) 1px, transparent 1px), var(--paper);
   background-size: 48px 48px;
 }
 
@@ -758,10 +763,20 @@ a:hover .arrow {
   inset: 0;
   content: "";
   background:
-    radial-gradient(circle at center, transparent 0 24%, rgba(10, 54, 112, 0.16) 24.2% 24.5%, transparent 24.7% 39%, rgba(10, 54, 112, 0.14) 39.2% 39.5%, transparent 39.7%),
+    radial-gradient(
+      circle at center,
+      transparent 0 24%,
+      rgba(10, 54, 112, 0.16) 24.2% 24.5%,
+      transparent 24.7% 39%,
+      rgba(10, 54, 112, 0.14) 39.2% 39.5%,
+      transparent 39.7%
+    ),
     linear-gradient(rgba(10, 54, 112, 0.12) 1px, transparent 1px),
     linear-gradient(90deg, rgba(10, 54, 112, 0.12) 1px, transparent 1px);
-  background-size: auto, 46px 46px, 46px 46px;
+  background-size:
+    auto,
+    46px 46px,
+    46px 46px;
 }
 
 .plotCard {
@@ -1270,11 +1285,21 @@ a:hover .arrow {
 
 .finalCta {
   min-height: 920px;
-  padding: clamp(2rem, 4vw, 4rem) clamp(1.25rem, 5vw, 6rem) clamp(4rem, 7vw, 7rem);
+  padding: clamp(2rem, 4vw, 4rem) clamp(1.25rem, 5vw, 6rem)
+    clamp(4rem, 7vw, 7rem);
   color: var(--paper-bright);
   background:
-    radial-gradient(circle at 90% 20%, rgba(169, 199, 238, 0.22), transparent 22%),
-    linear-gradient(120deg, transparent 0 62%, rgba(255, 92, 33, 0.96) 62% 63%, transparent 63%),
+    radial-gradient(
+      circle at 90% 20%,
+      rgba(169, 199, 238, 0.22),
+      transparent 22%
+    ),
+    linear-gradient(
+      120deg,
+      transparent 0 62%,
+      rgba(255, 92, 33, 0.96) 62% 63%,
+      transparent 63%
+    ),
     var(--ink);
 }
 

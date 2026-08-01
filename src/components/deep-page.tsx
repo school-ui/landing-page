@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { Arrow } from "./site-shell";
 import styles from "./deep-page.module.css";
+import { Arrow } from "./site-shell";
 
 export type HeroStat = {
   value: string;
@@ -90,7 +90,9 @@ export function SectionHeader({
   light?: boolean;
 }) {
   return (
-    <header className={`${styles.sectionHeader} ${light ? styles.sectionHeaderLight : ""}`}>
+    <header
+      className={`${styles.sectionHeader} ${light ? styles.sectionHeaderLight : ""}`}
+    >
       <p className={styles.sectionIndex}>{index}</p>
       <div>
         <p className={styles.sectionEyebrow}>{eyebrow}</p>
@@ -121,7 +123,9 @@ export function ScreenshotStage({
   contain?: boolean;
 }) {
   return (
-    <figure className={`${styles.screenshotStage} ${styles[`accent${accent}`]}`}>
+    <figure
+      className={`${styles.screenshotStage} ${styles[`accent${accent}`]}`}
+    >
       <div className={styles.windowBar}>
         <span className={styles.windowDots} aria-hidden="true">
           <i />
@@ -131,7 +135,9 @@ export function ScreenshotStage({
         <span>{label}</span>
         <span>current pilot UI</span>
       </div>
-      <div className={`${styles.screenshotImage} ${contain ? styles.contain : ""}`}>
+      <div
+        className={`${styles.screenshotImage} ${contain ? styles.contain : ""}`}
+      >
         <Image
           src={src}
           alt={alt}

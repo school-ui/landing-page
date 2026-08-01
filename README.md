@@ -25,6 +25,7 @@ npm run build
 - TypeScript
 - CSS Modules
 - `next/image` and `next/font`
+- Biome (linter + formatter)
 
 ## Site map
 
