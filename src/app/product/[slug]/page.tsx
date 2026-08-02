@@ -108,16 +108,21 @@ export default async function ProductDetailPage({ params }: PageProps) {
             />
           );
 
+          const isReversed = index % 2 === 1;
+          const [leading, trailing] = isReversed
+            ? [screenshot, copy]
+            : [copy, screenshot];
+
           return (
             <section
               className={sectionClasses[index % sectionClasses.length]}
               key={chapter.index}
             >
               <div
-                className={`${atlas.split} ${index % 2 ? atlas.splitReverse : ""}`}
+                className={`${atlas.split} ${isReversed ? atlas.splitReverse : ""}`}
               >
-                {index % 2 ? screenshot : copy}
-                {index % 2 ? copy : screenshot}
+                {leading}
+                {trailing}
               </div>
               <div className={atlas.formulaBand}>
                 <span>What happens underneath</span>

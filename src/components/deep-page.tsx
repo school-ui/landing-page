@@ -17,7 +17,7 @@ export function Breadcrumbs({
   return (
     <nav className={styles.breadcrumbs} aria-label="Breadcrumb">
       {items.map((item, index) => (
-        <span key={`${item.label}-${index}`}>
+        <span key={item.label}>
           {item.href ? <Link href={item.href}>{item.label}</Link> : item.label}
           {index < items.length - 1 ? <b aria-hidden="true">/</b> : null}
         </span>
@@ -195,5 +195,3 @@ export function NextChapter({
     </section>
   );
 }
-
-export { styles as deepStyles };

@@ -46,6 +46,7 @@ export default function Home() {
     <>
       <SiteHeader />
       <main>
+        {/* biome-ignore lint/correctness/useUniqueElementIds: deliberate scroll/deep-link anchor for #top — globals.css:21-22 sets scroll-behavior:smooth and scroll-padding-top:6rem specifically to offset these fragment jumps. Home is the "/" route component, rendered once per document, so no duplicate-id hazard exists; a per-render useId() value would change the emitted id and silently break every existing link to school-ui.com/#top. */}
         <section className={styles.hero} id="top">
           <div className={styles.heroGrid}>
             <div className={`${styles.heroCopy} ${styles.enterOne}`}>
@@ -123,6 +124,7 @@ export default function Home() {
           </div>
         </section>
 
+        {/* biome-ignore lint/correctness/useUniqueElementIds: deliberate scroll/deep-link anchor for #experience — globals.css:21-22 sets scroll-behavior:smooth and scroll-padding-top:6rem specifically to offset these fragment jumps. Home is the "/" route component, rendered once per document, so no duplicate-id hazard exists; a per-render useId() value would change the emitted id and silently break every existing link to school-ui.com/#experience. */}
         <section className={styles.experience} id="experience">
           <div className={styles.sectionHeading}>
             <div>
@@ -241,6 +243,7 @@ export default function Home() {
           </div>
         </section>
 
+        {/* biome-ignore lint/correctness/useUniqueElementIds: deliberate scroll/deep-link anchor for #architecture — globals.css:21-22 sets scroll-behavior:smooth and scroll-padding-top:6rem specifically to offset these fragment jumps. Home is the "/" route component, rendered once per document, so no duplicate-id hazard exists; a per-render useId() value would change the emitted id and silently break every existing link to school-ui.com/#architecture. */}
         <section className={styles.hardware} id="architecture">
           <div className={styles.hardwareHeader}>
             <p className={styles.eyebrow}>03 — School-owned intelligence</p>
@@ -364,6 +367,7 @@ export default function Home() {
           </div>
         </section>
 
+        {/* biome-ignore lint/correctness/useUniqueElementIds: deliberate scroll/deep-link anchor for #story — globals.css:21-22 sets scroll-behavior:smooth and scroll-padding-top:6rem specifically to offset these fragment jumps. Home is the "/" route component, rendered once per document, so no duplicate-id hazard exists; a per-render useId() value would change the emitted id and silently break every existing link to school-ui.com/#story. */}
         <section className={styles.story} id="story">
           <div className={styles.storyVisual}>
             <Image

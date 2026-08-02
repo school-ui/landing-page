@@ -175,6 +175,7 @@
   font-family: var(--font-body), sans-serif;
 }
 
+/* biome-ignore lint/style/noDescendingSpecificity: the only overlapping declaration is `fill`, and the overriding selector `.darkNode + .nodeText .nodeTitle` (0,3,0) outranks this one (0,1,0), so the cascade resolves it on specificity and source order is irrelevant. */
 .nodeTitle {
   fill: #121820;
   font-size: 18px;
@@ -182,6 +183,7 @@
   letter-spacing: -0.025em;
 }
 
+/* biome-ignore lint/style/noDescendingSpecificity: the only overlapping declaration is `fill`, and the overriding selector `.darkNode + .nodeText .nodeDetail` (0,3,0) outranks this one (0,1,0), so the cascade resolves it on specificity and source order is irrelevant. */
 .nodeDetail {
   fill: #5d625f;
   font-family: var(--font-mono), monospace;

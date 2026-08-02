@@ -1,3 +1,4 @@
+import { useId } from "react";
 import styles from "./technical-diagrams.module.css";
 
 function SvgText({
@@ -28,6 +29,11 @@ function SvgText({
 }
 
 export function SystemArchitectureDiagram() {
+  const baseId = useId();
+  const titleId = `${baseId}-title`;
+  const descId = `${baseId}-desc`;
+  const arrowId = `${baseId}-arrow`;
+  const gridId = `${baseId}-grid`;
   return (
     <figure className={styles.figure}>
       <div className={styles.figureTopline}>
@@ -39,10 +45,10 @@ export function SystemArchitectureDiagram() {
           className={styles.systemMap}
           viewBox="0 0 1440 850"
           role="img"
-          aria-labelledby="system-map-title system-map-desc"
+          aria-labelledby={`${titleId} ${descId}`}
         >
-          <title id="system-map-title">School UI system architecture</title>
-          <desc id="system-map-desc">
+          <title id={titleId}>School UI system architecture</title>
+          <desc id={descId}>
             Browser clients connect to the PHP web application. The application
             stores durable encrypted data in MySQL and encrypted file storage,
             uses a non-persistent Valkey speed layer, and calls the local DGX
@@ -50,7 +56,7 @@ export function SystemArchitectureDiagram() {
           </desc>
           <defs>
             <marker
-              id="system-arrow"
+              id={arrowId}
               markerWidth="8"
               markerHeight="8"
               refX="7"
@@ -60,7 +66,7 @@ export function SystemArchitectureDiagram() {
               <path d="M0,0 L8,4 L0,8 Z" className={styles.arrowHead} />
             </marker>
             <pattern
-              id="blueprint-grid"
+              id={gridId}
               width="28"
               height="28"
               patternUnits="userSpaceOnUse"
@@ -70,7 +76,7 @@ export function SystemArchitectureDiagram() {
           </defs>
 
           <rect width="1440" height="850" className={styles.mapBackground} />
-          <rect width="1440" height="850" fill="url(#blueprint-grid)" />
+          <rect width="1440" height="850" fill={`url(#${gridId})`} />
 
           <text x="54" y="44" className={styles.coordinate}>
             TRUST BOUNDARY 01 / PEOPLE
@@ -402,67 +408,67 @@ export function SystemArchitectureDiagram() {
           <path
             d="M274 180 H364"
             className={styles.flowLine}
-            markerEnd="url(#system-arrow)"
+            markerEnd={`url(#${arrowId})`}
           />
           <path
             d="M274 312 C316 312 316 202 364 202"
             className={styles.flowLine}
-            markerEnd="url(#system-arrow)"
+            markerEnd={`url(#${arrowId})`}
           />
           <path
             d="M274 444 C318 444 316 224 364 224"
             className={styles.flowLine}
-            markerEnd="url(#system-arrow)"
+            markerEnd={`url(#${arrowId})`}
           />
           <path
             d="M500 248 V286"
             className={styles.internalLine}
-            markerEnd="url(#system-arrow)"
+            markerEnd={`url(#${arrowId})`}
           />
           <path
             d="M650 248 C650 268 800 264 800 286"
             className={styles.internalLine}
-            markerEnd="url(#system-arrow)"
+            markerEnd={`url(#${arrowId})`}
           />
           <path
             d="M500 416 V448"
             className={styles.internalLine}
-            markerEnd="url(#system-arrow)"
+            markerEnd={`url(#${arrowId})`}
           />
           <path
             d="M800 416 V448"
             className={styles.internalLine}
-            markerEnd="url(#system-arrow)"
+            markerEnd={`url(#${arrowId})`}
           />
           <path
             d="M936 164 H1028"
             className={styles.flowLine}
-            markerEnd="url(#system-arrow)"
+            markerEnd={`url(#${arrowId})`}
           />
           <path
             d="M936 184 C974 184 976 296 1028 296"
             className={styles.flowLine}
-            markerEnd="url(#system-arrow)"
+            markerEnd={`url(#${arrowId})`}
           />
           <path
             d="M936 204 C974 204 976 316 1204 316"
             className={styles.flowLine}
-            markerEnd="url(#system-arrow)"
+            markerEnd={`url(#${arrowId})`}
           />
           <path
             d="M936 226 C974 226 974 436 1028 436"
             className={styles.controlLine}
-            markerEnd="url(#system-arrow)"
+            markerEnd={`url(#${arrowId})`}
           />
           <path
             d="M1198 486 V506"
             className={styles.controlLine}
-            markerEnd="url(#system-arrow)"
+            markerEnd={`url(#${arrowId})`}
           />
           <path
             d="M1198 556 H1204"
             className={styles.controlLine}
-            markerEnd="url(#system-arrow)"
+            markerEnd={`url(#${arrowId})`}
           />
         </svg>
       </div>
@@ -476,6 +482,10 @@ export function SystemArchitectureDiagram() {
 }
 
 export function VaultKeyDiagram() {
+  const baseId = useId();
+  const titleId = `${baseId}-title`;
+  const descId = `${baseId}-desc`;
+  const arrowId = `${baseId}-arrow`;
   return (
     <figure className={`${styles.figure} ${styles.lightFigure}`}>
       <div className={styles.figureTopline}>
@@ -487,17 +497,17 @@ export function VaultKeyDiagram() {
           className={styles.vaultMap}
           viewBox="0 0 1400 560"
           role="img"
-          aria-labelledby="vault-map-title vault-map-desc"
+          aria-labelledby={`${titleId} ${descId}`}
         >
-          <title id="vault-map-title">School UI Vault key hierarchy</title>
-          <desc id="vault-map-desc">
+          <title id={titleId}>School UI Vault key hierarchy</title>
+          <desc id={descId}>
             A password and per-account salt are processed by Argon2id to derive
             a key-encryption key. That key unwraps a random user data-encryption
             key, which protects private content with XChaCha20-Poly1305.
           </desc>
           <defs>
             <marker
-              id="vault-arrow"
+              id={arrowId}
               markerWidth="8"
               markerHeight="8"
               refX="7"
@@ -511,22 +521,22 @@ export function VaultKeyDiagram() {
           <path
             d="M210 192 H342"
             className={styles.vaultLine}
-            markerEnd="url(#vault-arrow)"
+            markerEnd={`url(#${arrowId})`}
           />
           <path
             d="M210 342 C270 342 278 238 342 238"
             className={styles.vaultLine}
-            markerEnd="url(#vault-arrow)"
+            markerEnd={`url(#${arrowId})`}
           />
           <path
             d="M550 216 H674"
             className={styles.vaultLine}
-            markerEnd="url(#vault-arrow)"
+            markerEnd={`url(#${arrowId})`}
           />
           <path
             d="M890 216 H1012"
             className={styles.vaultLine}
-            markerEnd="url(#vault-arrow)"
+            markerEnd={`url(#${arrowId})`}
           />
 
           <rect
@@ -637,7 +647,7 @@ export function VaultKeyDiagram() {
           <path
             d="M1176 306 V354"
             className={styles.vaultLine}
-            markerEnd="url(#vault-arrow)"
+            markerEnd={`url(#${arrowId})`}
           />
           <rect
             x="1012"
@@ -678,6 +688,10 @@ export function VaultKeyDiagram() {
 }
 
 export function ContainerTopologyDiagram() {
+  const baseId = useId();
+  const titleId = `${baseId}-title`;
+  const descId = `${baseId}-desc`;
+  const arrowId = `${baseId}-arrow`;
   return (
     <figure className={styles.figure}>
       <div className={styles.figureTopline}>
@@ -689,10 +703,10 @@ export function ContainerTopologyDiagram() {
           className={styles.containerMap}
           viewBox="0 0 1440 840"
           role="img"
-          aria-labelledby="container-map-title container-map-desc"
+          aria-labelledby={`${titleId} ${descId}`}
         >
-          <title id="container-map-title">DGX Spark container topology</title>
-          <desc id="container-map-desc">
+          <title id={titleId}>DGX Spark container topology</title>
+          <desc id={descId}>
             Six containers share a Docker Compose lifecycle when optional
             text-to-speech is enabled, but they do not share one network mode.
             Inference, embedding, Runtime, and speech use host networking;
@@ -701,7 +715,7 @@ export function ContainerTopologyDiagram() {
           </desc>
           <defs>
             <marker
-              id="container-arrow"
+              id={arrowId}
               markerWidth="8"
               markerHeight="8"
               refX="7"
@@ -907,32 +921,32 @@ export function ContainerTopologyDiagram() {
           <path
             d="M528 220 H566"
             className={styles.flowLine}
-            markerEnd="url(#container-arrow)"
+            markerEnd={`url(#${arrowId})`}
           />
           <path
             d="M366 434 H394"
             className={styles.controlLine}
-            markerEnd="url(#container-arrow)"
+            markerEnd={`url(#${arrowId})`}
           />
           <path
             d="M680 434 H708"
             className={styles.internalLine}
-            markerEnd="url(#container-arrow)"
+            markerEnd={`url(#${arrowId})`}
           />
           <path
             d="M1014 434 C1080 434 1080 370 1138 370"
             className={styles.controlLine}
-            markerEnd="url(#container-arrow)"
+            markerEnd={`url(#${arrowId})`}
           />
           <path
             d="M1266 574 V618"
             className={styles.controlLine}
-            markerEnd="url(#container-arrow)"
+            markerEnd={`url(#${arrowId})`}
           />
           <path
             d="M1138 238 C1098 238 1088 220 1014 220"
             className={styles.controlLine}
-            markerEnd="url(#container-arrow)"
+            markerEnd={`url(#${arrowId})`}
           />
           <text x="70" y="742" className={styles.formulaTextLight}>
             readiness(inference) → start(embedding)
